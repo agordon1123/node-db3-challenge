@@ -39,10 +39,12 @@ function update(changes, id) {
     return db('schemes')
         .where({ id })
         .update(changes)
+            .then(success => success)
+            .catch(err => err)
 };
 
 function remove(id) {
     return db('schemes')
-        .where({ id })
-        .del()
+    .where({ id })
+    .del()
 };
