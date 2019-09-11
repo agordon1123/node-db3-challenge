@@ -39,7 +39,13 @@ function update(changes, id) {
     return db('schemes')
         .where({ id })
         .update(changes)
-            .then(success => success)
+            .then(success => {
+                if (success === 1) {
+                    return findById(id)
+                } else {
+                    return null
+                }
+            })
             .catch(err => err)
 };
 
