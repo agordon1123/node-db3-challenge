@@ -29,7 +29,9 @@ function findSteps(id) {
 
 function add(scheme) {
     return db('schemes').insert(scheme)
-        .then(success => success)
+        .then(success => {
+            return findById(success[0])
+        })
         .catch(err => err)
 };
 
